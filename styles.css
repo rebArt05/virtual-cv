@@ -21,7 +21,9 @@ body {
     background-color: var(--dark);
     color: var(--light);
     overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scrolling */
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
 /* Terminal Loader Animation */
@@ -35,7 +37,7 @@ body {
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -71,8 +73,7 @@ body {
     background-color: var(--terminal-bg);
     color: var(--terminal-text);
     padding: 20px;
-    width: 600px;
-    max-width: 90%;
+    width: 100%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: var(--glow);
@@ -98,13 +99,15 @@ body {
 /* Main Interface */
 .cyber-container {
     display: flex;
-    min-height: 100vh;
+    min-height: 50%;
+    overflow-y: auto; /* Enable scrolling for main container */
+    width: 100vw;
     opacity: 0;
     transition: opacity 1s ease;
 }
 
 .cyber-sidebar {
-    width: 300px;
+    width: 300vw;
     background-color: rgba(0, 0, 0, 0.7);
     border-right: 1px solid var(--secondary);
     padding: 20px;
@@ -131,11 +134,13 @@ body {
     align-items: center;
     padding: 10px 15px;
     border-top: 1px solid var(--secondary);
+   
 }
 
 .prompt {
     color: var(--primary);
     margin-right: 10px;
+    
 }
 
 #terminal-command {
@@ -145,6 +150,7 @@ body {
     font-family: 'Source Code Pro', monospace;
     flex: 1;
     outline: none;
+    background-color: grey; /* Ensures input area stands out */
 }
 
 .security-status {
@@ -242,6 +248,9 @@ body {
 .content-section {
     display: none;
     animation: fadeIn 0.5s ease;
+    will-change: transform;
+    padding-bottom: 50px; /* Add space at bottom of sections */
+
 }
 
 .content-section.active-section {
@@ -433,16 +442,22 @@ body {
 @media (max-width: 768px) {
     .cyber-container {
         flex-direction: column;
+        display: flex;
+        min-height: 100vh;
     }
     
     .cyber-sidebar {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--secondary);
+        flex-shrink: 0;
     }
     
     .cyber-main {
         padding: 20px;
+        position: relative;
+        flex: 1;
+        overflow-y: auto;
     }
     
     .cyber-nav ul {
@@ -480,9 +495,7 @@ body {
   background: rgba(0, 255, 255, 0.3);
   box-shadow: 0 0 10px #0ff;
 }
-#links-section {
-    transition: opacity 0.5s ease;
-}
+
 
 
 @keyframes fadeIn {
@@ -490,22 +503,10 @@ body {
     to { opacity: 1; }
 }
 
-/* Add to your stylesheet */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-#links-section {
-  display: none;
-}
 
-#links-section.show {
-  display: block;
-  animation: fadeIn 1s ease-out;
-}
 
-/* Debounce scroll effects */
-.content-section {
-  will-change: transform;
-}
