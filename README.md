@@ -59,9 +59,3 @@ how it runs
 
 
 
-File Structure
-index.html           Main HTML file
-styles.css           All styling
-script.js            Interactive functionality
-profile.jpg          Profile image
-README.md            This file
