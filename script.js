@@ -14,22 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const terminalWindow = document.querySelector('.terminal-window');
     const linksSection = document.getElementById('links-section');
     
+    // Combined commands object
     const commands = {
-        help: 'Available commands: about, skills, portfolio, experience, reference, clear',
+        help: 'Available commands: about, skills, projects, portfolio, experience, contact, reference, clear',
         about: 'Displaying about section...',
         skills: 'Displaying skills section...',
+        projects: 'Displaying projects section...',
         portfolio: function() {
-            terminalOutput.innerHTML += '<p>> Accessing portfolio links...</p>';
-            setTimeout(() => {
-                if (terminalWindow) terminalWindow.style.display = 'none';
-                if (linksSection) {
-                    linksSection.style.display = 'block';
-                    linksSection.style.animation = 'fadeIn 1s ease-in';
+        terminalOutput.innerHTML += '<p>> Accessing portfolio links...</p>';
+        setTimeout(() => {
+        // Hide terminal window
+            if (terminalWindow) terminalWindow.style.display = 'none';
+
+            // Show links section in the main content area
+            if (linksSection) {
+                // Move links section to main content area if needed
+                const mainContent = document.querySelector('.cyber-main');
+                if (linksSection.parentNode !== mainContent) {
+                    mainContent.appendChild(linksSection);
                 }
-            }, 1500);
-            return '';
-        },
+
+                linksSection.style.display = 'block';
+                linksSection.style.animation = 'fadeIn 1s ease-in';
+
+                // Activate the links section in navigation
+                activateSection('links');
+            }
+        }, 300); // Reduced delay for better UX
+    return '';
+},
         experience: 'Displaying experience section...',
+        contact: 'Displaying contact section...',
         reference: 'Displaying reference section...',
         clear: function() {
             terminalOutput.innerHTML = '<p>> Welcome to my security portfolio.</p><p>> Type \'help\' for available commands.</p>';
@@ -49,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     output += `<p>> ${commands[command]}</p>`;
                     
                     // Navigate to section if it exists
-                    if (['about', 'skills', 'experience', 'reference'].includes(command)) {
+                    if (['about', 'skills', 'projects', 'portfolio', 'experience', 'contact', 'reference'].includes(command)) {
                         const targetLink = document.querySelector(`.nav-link[data-section="${command}"]`);
                         if (targetLink) {
                             targetLink.click();
