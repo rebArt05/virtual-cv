@@ -50,6 +50,14 @@ Customization
 3. Styling:
    Change colors in `:root` CSS variables
    Adjust animations in CSS
+how it runs
+
+<img width="1894" height="423" alt="image" src="https://github.com/user-attachments/assets/306e5daf-cd0d-42b7-bc75-806ec5a4b498" />
+<img width="1518" height="377" alt="image" src="https://github.com/user-attachments/assets/c6cdab7e-5eca-413e-b41d-83d7f4dd07ee" />
+<img width="721" height="399" alt="image" src="https://github.com/user-attachments/assets/ec333e15-6aa3-43df-9af5-92048ac0bab0" />
+<img width="1897" height="351" alt="image" src="https://github.com/user-attachments/assets/57055b4d-4745-4b71-95dc-8ad4d332b46f" />
+
+
 
 File Structure
 index.html           Main HTML file
